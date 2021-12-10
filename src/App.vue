@@ -47,7 +47,7 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: {{firstName}} {{ lastName }}</p>
+                        <p>Full Name: <app-full-name-creator :firstName="firstName" :lastName="lastName"></app-full-name-creator></p>
                         <p>Mail: {{ email }}</p>
                         <p>Password: {{ password }}</p>
                         <p>Store in Database?: {{ isStoreData }}</p>
@@ -59,23 +59,27 @@
 </template>
 
 <script>
-    export default {
-      data() {
-        return {
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-          isStoreData: 'yes',
-          isSubmitted: false,
-        }
-      },
-      methods: {
-        submitted() {
-          this.isSubmitted = true;
-        }
-      }
+import FullNameCreator from './components/FullNameCreator.vue';
+export default {
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      isStoreData: 'yes',
+      isSubmitted: false,
     }
+  },
+  methods: {
+    submitted() {
+      this.isSubmitted = true;
+    }
+  },
+  components: {
+    appFullNameCreator: FullNameCreator
+  }
+}
 </script>
 
 <style>
